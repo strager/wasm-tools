@@ -280,6 +280,9 @@ impl Printer {
                             .insert(local_name.func_index, local_map);
                     }
                 }
+                Name::Unknown {..} => {
+                    // Ignore unknown names sections.
+                }
             }
         }
         Ok(())

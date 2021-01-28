@@ -176,6 +176,10 @@ pub enum Name<'a> {
     Module(ModuleName<'a>),
     Function(FunctionName<'a>),
     Local(LocalName<'a>),
+    Unknown {
+        subsection_id: u8,
+        offset: usize,
+    },
 }
 
 pub struct NameSectionReader<'a> {
@@ -223,6 +227,8 @@ impl<'a> NameSectionReader<'a> {
             NameType::Module => Name::Module(ModuleName { data, offset }),
             NameType::Function => Name::Function(FunctionName { data, offset }),
             NameType::Local => Name::Local(LocalName { data, offset }),
+            NameType::Unknown { subsection_id, offset } => Name::Unknown {
+                subsection_id, offset },
         })
     }
 }

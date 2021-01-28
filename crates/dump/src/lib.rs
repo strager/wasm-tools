@@ -356,6 +356,9 @@ impl<'a> Dump<'a> {
                     }
                 }
             }
+            Name::Unknown {..} => {
+                write!(self.state, "@@@")?;
+            }
         }
         Ok(())
     }

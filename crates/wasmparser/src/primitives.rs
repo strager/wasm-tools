@@ -272,6 +272,10 @@ pub enum NameType {
     Module,
     Function,
     Local,
+    Unknown {
+        subsection_id: u8,
+        offset: usize,
+    },
 }
 
 #[derive(Debug, Copy, Clone)]
